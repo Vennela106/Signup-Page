@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .container {
+            background-color: white;
+            width: 300px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Signup Form</h2>
+
+        <input type="text" id="name" placeholder="Enter Name">
+
+        <input type="email" id="email" placeholder="Enter Email">
+
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <br><br>
+
+        <button onclick="signup()">Sign Up</button>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function signup() {
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (name == "" || email == "" || password == "") {
+                document.getElementById("message").innerHTML =
+                    "Please fill all fields!";
+            }
+            else {
+                let user = {
+                    name: name,
+                    email: email,
+                    password: password
+                };
+
+                localStorage.setItem("user", JSON.stringify(user));
+
+                document.getElementById("message").innerHTML =
+                    "Signup Successful!";
+            }
+        }
+    </script>
+
+</body>
+</html>
